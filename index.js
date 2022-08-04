@@ -97,7 +97,7 @@ function renderTable(data) {
   table.appendChild(fragment);
 }
 
-function press(nameArr) {
+function sortName(nameArr) {
   let pressName = document.getElementById("name");
   function renderNameTable(arr) {
     for (c = 0; c < arr.length; c++) {
