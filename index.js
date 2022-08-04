@@ -97,22 +97,23 @@ function renderTable(data) {
   table.appendChild(fragment);
 }
 
+function renderSortingTable(arr) {
+  for (c = 0; c < arr.length; c++) {
+    document.getElementById("table").rows[c + 1].childNodes[0].innerText =
+      arr[c].name;
+    document.getElementById("table").rows[c + 1].childNodes[1].innerText =
+      arr[c].position;
+    document.getElementById("table").rows[c + 1].childNodes[2].innerText =
+      arr[c].office;
+    document.getElementById("table").rows[c + 1].childNodes[3].innerText =
+      arr[c].age;
+    document.getElementById("table").rows[c + 1].childNodes[4].innerText =
+      arr[c].startDate;
+  }
+}
+
 function sortName(nameArr) {
   let pressName = document.getElementById("name");
-  function renderNameTable(arr) {
-    for (c = 0; c < arr.length; c++) {
-      document.getElementById("table").rows[c + 1].childNodes[0].innerText =
-        nameArr[c].name;
-      document.getElementById("table").rows[c + 1].childNodes[1].innerText =
-        nameArr[c].position;
-      document.getElementById("table").rows[c + 1].childNodes[2].innerText =
-        nameArr[c].office;
-      document.getElementById("table").rows[c + 1].childNodes[3].innerText =
-        nameArr[c].age;
-      document.getElementById("table").rows[c + 1].childNodes[4].innerText =
-        nameArr[c].startDate;
-    }
-  }
   pressName.onclick = function () {
     nameArr.sort(function (a, b) {
       let nameA = a.name.toUpperCase();
@@ -125,32 +126,16 @@ function sortName(nameArr) {
       }
       return 0;
     });
-    renderNameTable(nameArr);
+    renderSortingTable(nameArr);
   };
 }
 
 function sortDate(dateArr) {
   let pressDate = document.getElementById("date");
-
-  function renderDateTable(arr) {
-    for (z = 0; z < arr.length; z++) {
-      document.getElementById("table").rows[z + 1].childNodes[0].innerText =
-        dateArr[z].name;
-      document.getElementById("table").rows[z + 1].childNodes[1].innerText =
-        dateArr[z].position;
-      document.getElementById("table").rows[z + 1].childNodes[2].innerText =
-        dateArr[z].office;
-      document.getElementById("table").rows[z + 1].childNodes[3].innerText =
-        dateArr[z].age;
-      document.getElementById("table").rows[z + 1].childNodes[4].innerText =
-        dateArr[z].startDate;
-    }
-  }
-
   pressDate.onclick = function () {
     dateArr.sort(function (x, y) {
       return x.startDate < y.startDate ? 1 : -1;
     });
-    renderDateTable(dateArr);
+    renderSortingTable(dateArr);
   };
 }
